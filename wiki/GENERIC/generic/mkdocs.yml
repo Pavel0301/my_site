@@ -1,0 +1,60 @@
+site_name: my_site
+
+#docs_dir: '/home/agate/GDprojects/godot/wiki/1_startGodot/startgodot/docs'
+
+site_dir: 'wiki/GENERIC/generic/build'
+
+
+#site_url: https://example.com/
+nav:
+    - Jupiter: jupiter-notebook.md
+    - Installed Packs Settings: packs_settings.md
+    - pip install: pip.md
+    - index:  index.md
+    - django_all: django_docs_and_ideas.md
+    - Dev: dev.md
+    - settings: settings.md
+    - Blog: blog/models.md
+
+
+    
+    
+   
+
+#theme: readthedocs
+theme:
+  name: material
+
+
+dev_addr:
+    127.0.0.1:8200
+
+
+#markdown_extensions:
+    #- toc:
+        #permalink: True
+
+markdown_extensions:
+
+  
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets 
+  #- toc:
+      #permalink: True         
+    
+
+# сворачивание страниц
+collapse_single_pages: true
+
+plugins:
+    - search
+    - awesome-pages
+
+site_author:
+    Pavel Senator
+
+
+#pip
+#pip install mkdocs-awesome-pages-plugin

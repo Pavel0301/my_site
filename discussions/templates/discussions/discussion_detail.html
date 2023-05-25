@@ -1,0 +1,63 @@
+{% extends "blog/base.html" %}{#наследуется от blog/base.html#}
+
+{% block title%}Discussion{%endblock%}
+
+{% block content %}
+
+
+{% if messages %}
+{% if user.is_authenticated %}
+  {{user}}
+{% else %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
+<div class="row">
+    <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+
+        <div class="intro">
+            <h1 class="text-center" data-bss-hover-animate="pulse">&nbsp;
+
+
+                {{discussion_detail.title}}
+
+
+
+
+            </h1>
+            <p class="text-center">
+                <span class="by">by </span>{{Discussion.author}}<a href="#">{{discussion_detail.author}}</a>&nbsp;&nbsp;<span class="date">{{discussion_detail.date_created|date:"F d Y"}} </span>
+            {{discussion_detail.content|safe }}
+            </p>
+        </div>
+
+
+        <div class="text">
+            <p>
+
+
+
+            </p>
+            <figure class="figure d-block"></figure>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{%endblock%}
