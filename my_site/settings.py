@@ -57,7 +57,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 # разрешённые хосты
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -80,14 +80,18 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.vk',
 
     'crispy_forms',
-    'crispy_bootstrap4',
+    'crispy_bootstrap5',
     'ckeditor',
+    'bootstrap5',
 
     # мои приложения
     'blog',  # когда применяете сигналы, метки
     'discussions',
+    'forms_app',
+    'authentication',
 
     # должна быть последней
     # https://github.com/un1t/django-cleanup
@@ -121,7 +125,7 @@ ROOT_URLCONF = 'my_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+        'DIRS': [BASE_DIR / 'templates'
 
                  ],
         'APP_DIRS': True,
@@ -160,7 +164,14 @@ SOCIALACCOUNT_PROVIDERS = {
             'repo',
             'read:org',
         ],
-    }
+    },
+    'vk': {
+        'APP': {
+            'client_id': 'App ID',
+            'secret': 'Secure Key',
+            'key': ''
+        }
+    },
 }
 
 # End django-allauth
@@ -213,11 +224,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # https://docs.djangoproject.com/en/4.0/ref/settings/#static-root
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
-
-     os.path.join(BASE_DIR, "other_static"),
+    BASE_DIR / 'static'
 
 ]
 
@@ -241,7 +251,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://django-crispy-forms.readthedocs.io/en/latest/install.html
 
 # CRISPY_TEMPLATE_PACK = 'bootstrap4'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # End django-crispy-forms
 
@@ -293,3 +304,55 @@ MESSAGE_TAGS = {
 # в производстве убрать.
 # alias jshell='python manage.py shell_plus --notebook'
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACCOUNT_FORMS = {
+    'add_email': 'allauth.account.forms.AddEmailForm',
+    'change_password': 'allauth.account.forms.ChangePasswordForm',
+    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+    'login': 'allauth.account.forms.LoginForm',
+    'reset_password': 'allauth.account.forms.ResetPasswordForm',
+    'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+    'set_password': 'allauth.account.forms.SetPasswordForm',
+    'signup': 'allauth.account.forms.SignupForm',
+    'user_token': 'allauth.account.forms.UserTokenForm',
+}
+
+SOCIALACCOUNT_FORMS = {
+    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+    'signup': 'allauth.socialaccount.forms.SignupForm',
+}
+
+
+#939623486512-13ti475go7bpbidrbl4a8t5p3msm35tk.apps.googleusercontent.com
+#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
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    }
+}
+
+LOGIN_REDIRECT_URL = 'home'
+
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
