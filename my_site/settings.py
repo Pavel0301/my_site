@@ -57,7 +57,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 # разрешённые хосты
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['www.papka2003.pythonanywhere.com', 'papka2003.pythonanywhere.com']
 
 # Application definition
 
