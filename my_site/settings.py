@@ -1,5 +1,5 @@
 
-
+import openai
 import warnings
 warnings.filterwarnings(action="ignore")
 
@@ -57,8 +57,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 # разрешённые хосты
-ALLOWED_HOSTS = ['www.papka2003.pythonanywhere.com', 'papka2003.pythonanywhere.com']
-
+ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
@@ -92,6 +91,8 @@ INSTALLED_APPS = [
     'discussions',
     'forms_app',
     'authentication',
+    'messenger',
+    'core',
 
     # должна быть последней
     # https://github.com/un1t/django-cleanup
@@ -99,7 +100,7 @@ INSTALLED_APPS = [
 
     # Jupiter-nootebook
     'django_extensions',
-
+    'pywebio',
 
     # django-taggit https://django-taggit.readthedocs.io/en/latest/
     'taggit',
@@ -227,7 +228,7 @@ STATIC_URL = 'static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'static/'
 
 ]
 
@@ -356,3 +357,6 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = 'home'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+
+
+OPENAI_API_KEY = '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'

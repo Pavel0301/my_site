@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT-3.5 Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('form').submit(function(event) {
+                event.preventDefault();
+                var message = $('#message').val();
+                $.ajax({
+                    url: '/messages/chatgpt/',
+                    type: 'POST',
+                    data: {message: message},
+                    success: function(response) {
+                        $('#chat').append('<div><strong>User:</strong> ' + message + '</div>');
+                        $('#chat').append('<div><strong>AI:</strong> ' + response.response + '</div>');
+                        $('#message').val('');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+{% extends 'account/base.html' %}
+{% block content %}
+{% include 'templates_my_site/navbar.html' %}
+
+<center>
+    <h1>ChatGPT-3.5 Demo</h1>
+    <div id="chat"></div>
+    <form method="post">
+        <br>
+        {% csrf_token %}
+        <input type="text" id="message" name="message" placeholder="Type your message...">
+
+        <button type="submit">Send</button>
+    </form>
+    </center>
+
+</body>
+{% endblock %}
+</html>

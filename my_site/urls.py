@@ -30,7 +30,8 @@ urlpatterns = [
     path('my_site/', include('discussions.urls'), name='discussions_urls'),
     path('my_site/', include('forms_app.urls'), name='forms_app_urls'),
     path('accounts/', include('allauth.urls')),
-    path('profile/', TemplateView.as_view(template_name='dashboard/home.html'), name='home')
+    path('profile/', TemplateView.as_view(template_name='dashboard/home.html'), name='home'),
+    path('messages/', include('messenger.urls'), name='messenger_urls'),
 
 ]
     #path('__debug__/', include('debug_toolbar.urls')),
@@ -55,19 +56,6 @@ if settings.DEBUG:
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

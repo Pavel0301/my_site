@@ -6,30 +6,52 @@
                     </svg></span><span>Brand</span></a><button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div id="navcol-5" class="collapse navbar-collapse">
                 <ul class="navbar-nav nav-right">
-                <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}" style="color: rgba(224,217,217,0.9);">My Profile</a></li>
 
-                <li class="nav-item"><a class="nav-link active" href="index.html" style="color: rgba(224,217,217,0.9);">home </a></li>
+
+                <li class="nav-item"><a class="nav-link active" href="{% url 'blog_urls:user-posts-list' user %}" style="color: rgba(224,217,217,0.9);"> Мои посты </a></li>
+                <li class="nav-item"><a class="nav-link active" href="/my_site/post/create/" style="color: rgba(224,217,217,0.9);"> Создать пост </a></li>
+                <li class="nav-item"><a class="nav-link active" href="/my_site/discussion/create/" style="color: rgba(224,217,217,0.9);"> Создать дисскусию </a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/messages/chatgpt/" style="color: rgba(224,217,217,0.9);"> ChatGPT </a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Posts</a>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">{{ user.username }}</a>
+
+
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{% url 'blog_urls:user-posts-list' user %}">My Posts</a>
-                            <a class="dropdown-item" href="/my_site/post/create/">Create Post</a>
-                            <a class="dropdown-item" href="/my_site/discussion/create/">Create discussion</a>
+                            <a class="dropdown-item" href="{% url 'home' %}"> My Profile </a>
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item active" aria-current="true"  href="{% url 'account_logout' %}"> Выйти </a>
                         </div>
                     </li>
                 </ul>
+                <ul class="dropdown-menu">
+                   <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
 
 
-                <a class="nav-link active" href="{% url 'home' %}" style="color: rgba(224,217,217,0.9);">{{ user }}</a>
-                <a class="btn btn-primary ms-md-2" role="button" href="{% url 'account_logout' %}">Logout</a>
+             <!--   <a class="nav-link active" href="{% url 'home' %}" style="color: rgba(224,217,217,0.9);">{{ user }}</a>
+                <a class="btn btn-primary ms-md-2" role="button" href="{% url 'account_logout' %}">Logout</a> -->
 
             </div>
         </div>
     </nav>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Untitled</title>
+</head>
+
+
+</html>
 {% else %}
 
     <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
